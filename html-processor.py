@@ -6,8 +6,8 @@ with open('testpage.txt','r',encoding='utf-8') as fp:
 
 # vima 1 eksagogi kai ektiposi titlou
 rexp1 = re.compile(r'<title>(.+?)</title>')
-  m = rexp1.search(text)
-    print(m.group(0))
+m = rexp1.search(text)
+print(m.group(0))
 
 #vima 2 apalifi sxolion
 rexp2 = re.compile(r'<!.*?>',re.DOTALL)
@@ -18,14 +18,15 @@ rexp3 = re.compile(r'(<script.+?</script>)|(<style.+?</style>)')
 text2 = rexp3.sub('',text1)
 
 #vima 4 eksagogi kai ektiposi href apo <a>
-rexp4 = re.compile(r'<a.+?href="(.*?)".*?>(.*?)</a>',re.DOTALL)
- for m in rexp4.finditer(text2):
-    print(m.group(0))
+rexp4 = re.compile(r'<a(.+?)</a>',re.DOTALL)
+for m in rexp4.finditer(text2):
+  print(m.group(0))
 
 #vima 5 apalifi tags
 rexp5_1 = re.compile(r'<.+?>|</.+?>',re.DOTALL)
 rexp5_2 = re.compile(r'<.+?/>',re.DOTALL) 
-text3 = rexp5.sub('', text2)
+text3 = rexp5_1.sub('', text2)
+text4 = rexp5_2.sub('', text3)
 
 def func(m): #dilosi sinartisis pou metatrepei ola ta html entities simfona me ton pinaka
 
@@ -40,11 +41,11 @@ def func(m): #dilosi sinartisis pou metatrepei ola ta html entities simfona me t
                    
 # vima 6 metatropi ton html entities me xrisi tis sunartisis func              
 rexp6 = re.compile(r'&(amp|gt|lt|nbsp);')
-text4 = rexp6.sub(func,text3) 
+text5 = rexp6.sub(func,text4) 
                    
 # vima 7 metatropi sinexomenon xaraktiron whitespace se ena keno                   
 rexp7 = re.compile(r'\s+') 
-text5 = rexp7.sub(' ',text4)
+text6 = rexp7.sub(' ',text5)
                    
 # vima 8 ektiposi telikou keimenou meta apo tis epeksergasies                   
-print(text5)                   
+print(text6)                   
