@@ -6,26 +6,26 @@ with open('testpage.txt','r',encoding='utf-8') as fp:
 
 # vima 1 eksagogi kai ektiposi titlou
 rexp1 = re.compile(r'<title>(.+?)</title>')
-  m = repx.search(text)
+  m = rexp.search(text)
     print(m.group(0))
 
 #vima 2 apalifi sxolion
 rexp2 = re.compile(r'<!.*?>',re.DOTALL)
-  text1 = repx2.sub('', text)
+  text1 = rexp2.sub('', text)
 
 #vima 3 apalifi script kai style
 rexp3 = re.compile(r'(<script.+?</script>)|(<style.+?</style>)')
-  text2 = repx3.sub('',text1)
+  text2 = rexp3.sub('',text1)
 
 
 #vima 4 eksagogi kai ektiposi href apo <a>
-repx4 = re.compile(r"<a(.+?)</a>',re.DOTALL)
-  for m in repx4.finditer(text2):
+rexp4 = re.compile(r"<a(.+?)</a>',re.DOTALL)
+  for m in rexp4.finditer(text2):
     print(m.group(0))
 
 #vima 5 apalifi tags
-repx5 = re.compile(r'<.+?>')
-  text3 = repx5.sub('', text2)
+rexp5 = re.compile(r'<.+?>')
+  text3 = rexp5.sub('', text2)
 
 def func(m): #dilosi sinartisis pou metatrepei ola ta html entities simfona me ton pinaka
 
