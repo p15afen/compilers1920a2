@@ -48,4 +48,4 @@ rexp7 = re.compile(r'\s+')
 text = rexp7.sub(' ',text)
                    
 # vima 8 ektiposi telikou keimenou meta apo tis epeksergasies                   
-print(text6)                   
+print(text)                   
