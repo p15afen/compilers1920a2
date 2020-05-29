@@ -6,7 +6,7 @@ with open('testpage.txt','r',encoding='utf-8') as fp:
 
 # vima 1 eksagogi kai ektiposi titlou
 rexp1 = re.compile(r'<title>(.+?)</title>')
-  m = rexp.search(text)
+  m = rexp1.search(text)
     print(m.group(0))
 
 #vima 2 apalifi sxolion
