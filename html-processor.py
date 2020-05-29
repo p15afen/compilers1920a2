@@ -18,9 +18,9 @@ rexp3 = re.compile(r'(<script.+?</script>)|(<style.+?</style>)')
 text = rexp3.sub('',text)
 
 #vima 4 eksagogi kai ektiposi href apo <a>
-rexp4 = re.compile(r'<a(.+?)</a>',re.DOTALL)
+rexp4 = re.compile('<a.*?href="(.+?)".*?>(.*?)</a>',re.DOTALL)
 for m in rexp4.finditer(text):
-  print(m.group(0))
+  print(m.group(1), m.group(2))
 
 #vima 5 apalifi tags
 rexp5_1 = re.compile(r'<.+?>|</.+?>',re.DOTALL)
