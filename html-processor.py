@@ -18,12 +18,13 @@ rexp3 = re.compile(r'(<script.+?</script>)|(<style.+?</style>)')
 text2 = rexp3.sub('',text1)
 
 #vima 4 eksagogi kai ektiposi href apo <a>
-rexp4 = re.compile(r"<a(.+?)</a>',re.DOTALL)
+rexp4 = re.compile(r'<a.+?href="(.*?)".*?>(.*?)</a>',re.DOTALL)
  for m in rexp4.finditer(text2):
     print(m.group(0))
 
 #vima 5 apalifi tags
-rexp5 = re.compile(r'<.+?>')
+rexp5_1 = re.compile(r'<.+?>|</.+?>',re.DOTALL)
+rexp5_2 = re.compile(r'<.+?/>',re.DOTALL) 
 text3 = rexp5.sub('', text2)
 
 def func(m): #dilosi sinartisis pou metatrepei ola ta html entities simfona me ton pinaka
